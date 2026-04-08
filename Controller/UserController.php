@@ -105,7 +105,7 @@ class UserController
             $exist = intval($row["exist"]); // 1 o 0
 
             if ($exist === 1) {
-                header('Location: ../view/index.php');
+                header('Location: ../Vista/index.html');
                 exit();
             } else {
                 // $error = "Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.";

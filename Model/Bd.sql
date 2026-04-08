@@ -65,7 +65,7 @@ BEGIN
 		SELECT *
         FROM aficionado
         WHERE email = emailP
-        AND password = passwordP
+        AND Pwd = passwordP
 	) INTO valido;
 END //
 DELIMITER ;
@@ -81,7 +81,7 @@ BEGIN
 		SELECT *
         FROM promotor
         WHERE email = emailP
-        AND password = passwordP
+        AND Pwd = passwordP
 	) INTO valido;
 END //
 DELIMITER ;
