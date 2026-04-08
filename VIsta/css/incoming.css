@@ -1,4 +1,4 @@
-/* RESET GENERAL PARA ESTA PÁGINA */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,25 +7,23 @@
 }
 
 body {
-    background-color: #000; /* Fondo negro absoluto de la pantalla */
+    background-color: #000; 
     color: white;
     display: flex;
     justify-content: center;
     padding: 40px 20px;
 }
 
-/* CONTENEDOR PRINCIPAL (La tarjeta gigante) */
 .news-detail {
-    background-color: #1a1a1a; /* Gris muy oscuro como la de Mbappé */
+    background-color: #1a1a1a; 
     width: 100%;
-    max-width: 1000px; /* Ancho ideal para lectura */
+    max-width: 1000px;
     padding: 40px;
     border-radius: 8px;
     border-top: 5px solid red;
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* TÍTULO PRINCIPAL */
 .news-detail h2 {
     color: red;
     font-size: 2.2rem;
@@ -34,7 +32,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* SUBTÍTULO / INFO */
 .meta-info {
     color: #666;
     font-size: 0.9rem;
@@ -43,7 +40,6 @@ body {
     border-bottom: 1px solid #333;
 }
 
-/* TEXTO DE INTRODUCCIÓN */
 .detail-content p {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -51,9 +47,8 @@ body {
     margin-bottom: 25px;
 }
 
-/* CAJA DE ESTADÍSTICAS (Igual a la de la imagen) */
 .stats-box {
-    background-color: #000; /* Fondo negro dentro de la caja gris */
+    background-color: #000; 
     border-left: 4px solid red;
     padding: 25px;
     margin: 30px 0;
@@ -77,13 +72,11 @@ body {
     font-size: 1.05rem;
 }
 
-/* Estilo para resaltar la primera palabra de la estadística */
 .stats-box li strong {
     color: red;
     margin-right: 5px;
 }
 
-/* BOTÓN VOLVER */
 .btn-back {
     display: inline-block;
     margin-top: 30px;
