@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Oswald', 'Impact', sans-serif;
 }
 
 body {
@@ -30,6 +30,10 @@ body {
     text-transform: uppercase;
     line-height: 1.2;
     margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .meta-info {
@@ -92,5 +96,25 @@ body {
 
 .btn-back:hover {
     background-color: red;
+    color: black;
+}
+
+.btn-backo {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: red;
+    border: 2px solid red;
+    border-radius: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-backo:hover {
+    background: red;
     color: black;
 }

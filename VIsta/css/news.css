@@ -3,7 +3,7 @@
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Oswald', 'Impact', sans-serif;
     background-color: black;
     color: #ffffff;
     line-height: 1.6;
@@ -35,8 +35,18 @@ main {
 .news-detail h2 {
     color: red;
     font-size: 2.2rem;
-    margin: 0;
-    text-transform: uppercase;
+    text-decoration: none;
+    
+    font-weight: 500;
+    letter-spacing: 1.2px; 
+    
+    
+    display: inline-block;
+    padding-bottom: 2px;
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all 0.3s ease;
 }
 
 .meta-info {
@@ -66,7 +76,18 @@ main {
 .stats-box h4 {
     margin: 0 0 1rem 0;
     color: red;
-    text-transform: uppercase;
+    text-decoration: none;
+    
+    font-weight: 500;
+    letter-spacing: 1.5px; 
+    font-size: 18px; 
+    
+    display: inline-block;
+    padding-bottom: 2px;
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all 0.3s ease;
 }
 
 .stats-box ul {
@@ -97,6 +118,26 @@ main {
 }
 
 .btn-back:hover {
+    background: red;
+    color: black;
+}
+
+.btn-backo {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: red;
+    border: 2px solid red;
+    border-radius: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-backo:hover {
     background: red;
     color: black;
 }
