@@ -152,7 +152,13 @@ class UserController
         }
         exit();
     }
-    public function logout() {}
+    public function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: ../Vista/index.php");
+    exit();
+    }
 
     public function update() {}
 

@@ -330,3 +330,16 @@ footer a {
         min-height: auto;
     }
 }
+
+button {
+    font-family: 'Oswald', 'Impact', sans-serif;
+    text-decoration: none;
+    
+    font-weight: 500;
+    letter-spacing: 1.4px; 
+    font-size: 15px; 
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all 0.3s ease;
+}
