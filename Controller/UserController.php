@@ -106,6 +106,9 @@ class UserController
             // 2. Ejecutar el procedimiento
             // Usamos variables de sesión de MySQL (@result) para capturar el OUT
             $conn->query("CALL $procedure('$email', '$password', @result)");
+            while ($conn->more_results() && $conn->next_result()) {
+                $conn->store_result();
+            }
 
             // 3. Obtener el resultado de esa variable
             $res = $conn->query("SELECT @result AS exist");
@@ -115,6 +118,18 @@ class UserController
             if ($exist === 1) {
                 // Guardar datos en sesión si es necesario antes de redirigir
                 $_SESSION['user'] = $email;
+                $_SESSION['user_type'] = $userType;
+
+                if ($userType === 'Promotor') {
+                    $userResult = $conn->query("SELECT Name AS nombre, Email AS email, Pwd AS pwd, Pwd AS pwdcon, Direction AS direccion, CreditCard AS tarjeta, 'Promotor' AS tipo FROM promotor WHERE Email = '$email'");
+                } else {
+                    $userResult = $conn->query("SELECT Name AS nombre, Email AS email, Pwd AS pwd, PwdCon AS pwdcon, Sport AS deporte, 'Aficionado' AS tipo FROM aficionado WHERE Email = '$email'");
+                }
+
+                if ($userResult && $userResult->num_rows === 1) {
+                    $_SESSION['user_info'] = $userResult->fetch_assoc();
+                }
+
                 header('Location: ../Vista/index.php');
                 exit(); // Importante para detener la ejecución
             } else {
@@ -142,29 +157,40 @@ class UserController
             $conn = $db->getConnection();
 
             $conn->query("CALL sp_loginp('$emailp', '$passwordp', @result)");
+            while ($conn->more_results() && $conn->next_result()) {
+                $conn->store_result();
+            }
             $result = $conn->query("SELECT @result AS exist");
             $row = $result->fetch_assoc();
             $exist = intval($row["exist"]); // 1 o 0
 
             if ($exist === 1) {
+                $_SESSION['user'] = $emailp;
+                $_SESSION['user_type'] = 'Promotor';
+
+                $userResult = $conn->query("SELECT Name AS nombre, Email AS email, Pwd AS pwd, Pwd AS pwdcon, Direction AS direccion, CreditCard AS tarjeta, 'Promotor' AS tipo FROM promotor WHERE Email = '$emailp'");
+                if ($userResult && $userResult->num_rows === 1) {
+                    $_SESSION['user_info'] = $userResult->fetch_assoc();
+                }
+
                 header('Location: ../Vista/index.php');
                 exit();
             } else {
-                // $error = "Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.";
-                // header("Location: index.php?error=" . urlencode($error));
-                // exit();
+                $_SESSION['login_error'][] = "Usuario o contraseña incorrectos";
+                header("Location: ../Vista/fan-login.php");
+                exit();
             }
         } else {
-            // $error = "Por favor, completa todos los campos.";
-            // header("Location: register-lector.php?error=" . urlencode($error));
-            //    exit;
+            $_SESSION['login_error'][] = "No se han rellenado todos los datos.";
+            header("Location: ../Vista/fan-login.php");
+            exit();
         }
         exit();
     }
     public function logout()
     {
         session_start();
-        session_unset();
+        unset($_SESSION['user'], $_SESSION['user_type'], $_SESSION['user_info']);
         session_destroy();
         header("Location: ../Vista/index.php");
         exit();
