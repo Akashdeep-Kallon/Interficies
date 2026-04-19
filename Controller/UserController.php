@@ -123,7 +123,9 @@ class UserController
                 exit();
             }
         } else {
-            echo "Por favor, rellena todos los campos.";
+            $_SESSION['login_error'][] = "No se han rellenado todos los datos.";
+            header("Location: ../Vista/fan-login.php");
+            exit();
         }
     }
 
@@ -145,7 +147,7 @@ class UserController
             $exist = intval($row["exist"]); // 1 o 0
 
             if ($exist === 1) {
-                header('Location: ../Vista/index.html');
+                header('Location: ../Vista/index.php');
                 exit();
             } else {
                 // $error = "Correo electrónico o contraseña incorrectos. Inténtalo de nuevo.";

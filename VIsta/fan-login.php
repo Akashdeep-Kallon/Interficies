@@ -1,5 +1,11 @@
 ﻿<?php
 session_start();
+// Reset session if requested
+if (isset($_GET['reset']) && $_GET['reset'] === '1') {
+    unset($_SESSION['user']);
+    header('Location: fan-login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +20,14 @@ session_start();
 
 <body>
     <header>
-        <h1>Iniciar Sesión - Aficionado</h1>
+        <h1>Iniciar Sesión</h1>
     </header>
-    <main>
-        <?php if (!empty($_SESSION['login_error']) && is_array($_SESSION['login_error'])) { ?>
+    <main>        <?php if (!empty($_SESSION['user'])) { ?>
+        <div style="text-align: center; padding: 40px; color: white;">
+            <h2>Ya estás conectado</h2>
+            <p>Tu sesión es activa. Accede a <a href="index.php" style="color: red;">la página principal</a>.</p>
+        </div>
+        <?php } else { ?>        <?php if (!empty($_SESSION['login_error']) && is_array($_SESSION['login_error'])) { ?>
             <div class="error-container">
                 <span class="error-icon">ⓘ</span>
                 <span>
@@ -56,6 +66,7 @@ session_start();
                 <a href="index.php" style="color: gray; text-decoration: none; font-size: 0.8rem;">← Volver al Inicio</a>
             </p>
         </form>
+        <?php } ?>
     </main>
 </body>
 
